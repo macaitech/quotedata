@@ -1,0 +1,40 @@
+server:
+
+ #端口号
+ port: 8087
+ context-path: /quote
+    
+spring:
+
+    #数据源配置
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        poolName: quoteGeneratorPool
+        #数据库连接地址
+        url: jdbc:mysql://localhost:3306/hqdata?useSSL=false&useUnicode=yes&characterEncoding=UTF8
+        #连接数据库用户名
+        username: root
+        #连接数据库密码
+        password: 12345678
+
+#mybatis配置
+mybatis:
+    config-location : classpath:config/mybatis/mybatis-config.xml
+    mapper-locations : classpath:config/mybatis/mapper/**/*.xml
+
+#日志配置
+logging:
+    level.com.macaitech: info
+    
+codeGenerator:
+
+    #系统标题
+    title: A.I. Quote
+
+    #页大小
+    pageSize: 15
+
+    #百度地图ak
+    baiduMapAk: G2zm7GgGGesyLUEoUfVF2jheDGRrkecU
+    

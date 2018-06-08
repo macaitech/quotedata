@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macaitech.quotedata.dao.FutureGoodsDao">
+
+    <insert id="insert" parameterType="FutureGoods" useGeneratedKeys="true" keyProperty="id">
+        insert into hq_future_good_quote 
+        (
+			Code,Name,HqDate,GoodPrice,HqCode,HqPrice,BaseOffset,
+			LatelyHqCode,LatelyHqPrice,LatelyBaseOffset,
+			CreateTime,UpdateTime
+        )
+        values (
+          #{code},#{name}, #{hqDate},#{goodPrice},#{hqCode}, #{hqPrice}, #{baseOffset},
+		  #{latelyHqCode}, #{latelyHqPrice}, #{latelyBaseOffset},
+		  now(), now()
+        )
+    </insert>
+
+    <select id="findList" parameterType="QueryFutureGoodsVo" resultType="FutureGoods">
+        select * 
+        from hq_future_good_quote
+    </select>
+
+    <select id="get" parameterType="Long" resultType="FutureGoods">
+        select * 
+        from hq_future_good_quote
+        where Id = #{id}
+    </select>
+
+    <update id="update" parameterType="FutureGoods">
+        update hq_future_good_quote
+        set 
+		  Code =#{code},
+		  Name =#{name},
+		  HqDate =#{hqDate},
+		  GoodPrice=#{goodPrice},
+		  HqCode =#{hqCode},
+		  HqPrice =#{hqPrice},
+		  BaseOffset =#{baseOffset},
+		  LatelyHqCode =#{latelyHqCode},
+		  LatelyHqPrice =#{latelyHqPrice},
+		  LatelyBaseOffset =#{latelyBaseOffset},
+		  CreateTime =now(),
+		  UpdateTime =now()
+		  where id = #{id}
+    </update>
+
+</mapper>
